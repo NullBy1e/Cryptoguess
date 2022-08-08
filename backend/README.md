@@ -8,10 +8,11 @@ go build main.go
 
 
 API Routes:  
-/version  
-/resources/coins_today => Returns todays coins  
-/resources/data/{Date?} => Returns previous data  
-/results/upload => uploads result from user  
+- /version => Returns the API version and version name  
+- /upload_result => Uploads result from user  
+- /resources/coins_today => Returns todays coins  
+- /resources/archive/:file => Returns archival data  
+
 
 
 Database Solution:

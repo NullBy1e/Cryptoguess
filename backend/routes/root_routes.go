@@ -8,4 +8,5 @@ import (
 
 func RootRoute(router *gin.Engine) {
 	router.GET("/version", controllers.RootVersion())
+	router.POST("/upload_result", controllers.RootUploadResult())
 }

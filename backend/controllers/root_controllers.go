@@ -19,3 +19,10 @@ func RootVersion() gin.HandlerFunc {
 		)
 	}
 }
+
+func RootUploadResult() gin.HandlerFunc {
+	return func(c *gin.Context) {
+		//TODO: Process the Result with the validator and parse them.
+		c.JSON(http.StatusServiceUnavailable, nil)
+	}
+}

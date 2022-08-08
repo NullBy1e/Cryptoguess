@@ -14,5 +14,7 @@ func main() {
 	store := memstore.NewStore([]byte(configs.EnvCookieSecret()))
 	router.Use(sessions.Sessions("cryptoguess", store))
 	routes.RootRoute(router)
+	routes.ResourcesRoute(router)
+	routes.AuthRoute(router)
 	router.Run(":8000")
 }
