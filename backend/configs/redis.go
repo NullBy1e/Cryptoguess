@@ -12,7 +12,7 @@ import (
 
 var ctx = context.Background()
 var rdb *redis.Client
-var counter = 5
+var counter = 0
 
 type Transaction struct {
 	Name   string  `json:"name"`
@@ -94,4 +94,12 @@ func get(c *redis.Client, key string, dest interface{}) error {
 		return err
 	}
 	return json.Unmarshal([]byte(p), dest)
+}
+
+func ClearAllTransactions() error {
+	err := rdb.FlushAll(ctx).Err()
+	if err != nil {
+		return err
+	}
+	return nil
 }

@@ -8,6 +8,10 @@ import (
 )
 
 func UpdateToday() {
+	err := configs.ArchiveToday()
+	if err != nil {
+		log.Panic("Cannot archive transactions", err)
+	}
 	currentTime := time.Now()
 	configs.Today = currentTime
 
