@@ -15,14 +15,6 @@ func EnvCookieSecret() string {
 	return os.Getenv("COOKIESECRET")
 }
 
-func EnvEtherscanAPIKey() string {
-	err := godotenv.Load()
-	if err != nil {
-		log.Fatal("Error loading .env file")
-	}
-	return os.Getenv("etherscanAPI")
-}
-
 func EnvAdminPassword() string {
 	err := godotenv.Load()
 	if err != nil {
