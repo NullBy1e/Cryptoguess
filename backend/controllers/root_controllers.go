@@ -59,6 +59,19 @@ func RootUploadResult() gin.HandlerFunc {
 			Action: *request.Action,
 		}
 
+		validTx := false
+		for i := range configs.CurrentCoins {
+			if configs.CurrentCoins[i].Name == request.Name {
+				validTx = true
+				break
+			}
+		}
+
+		if !validTx {
+			c.JSON(http.StatusBadRequest, responses.TransactionResponse{Message: "We aren't accepting this coin today"})
+			return
+		}
+
 		configs.SaveTransaction(transaction)
 
 		c.JSON(http.StatusOK, responses.TransactionResponse{Message: "Transaction saved"})
