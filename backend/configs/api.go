@@ -9,4 +9,3 @@ const API_Version_name string = "alfa"
 
 var Today time.Time
 var CurrentCoins []Coin
-var CoinPrices []float64

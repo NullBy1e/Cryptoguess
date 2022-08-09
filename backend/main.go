@@ -16,7 +16,7 @@ func main() {
 	scripts.UpdateToday()
 	//* Scheduled tasks
 	scheduler := gocron.NewScheduler(time.Local)
-	scheduler.Every(1).Hour().Do(func() { scripts.UpdateCoinPrices() })
+	scheduler.Every(15).Minutes().Do(func() { scripts.UpdateCoinPrices() })
 	scheduler.Every(1).Day().At("23:55").Do(func() { scripts.UpdateToday() })
 	scheduler.StartAsync()
 

@@ -57,7 +57,7 @@ func GetMarketCoins() ([]Coin, error) {
 	return coins, nil
 }
 
-func GetMarketPrice(coins []Coin) ([]float64, error) {
+func GetSpecificCoins(coins []Coin) ([]Coin, error) {
 
 	httpClient := http.Client{
 		Timeout: time.Second * 5,
@@ -98,11 +98,5 @@ func GetMarketPrice(coins []Coin) ([]float64, error) {
 		return nil, err
 	}
 
-	var prices []float64
-
-	for i := range new_coins {
-		prices = append(prices, new_coins[i].CurrentPrice)
-	}
-
-	return prices, nil
+	return new_coins, nil
 }

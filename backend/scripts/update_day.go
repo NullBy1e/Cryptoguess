@@ -32,22 +32,14 @@ func generateTodaysCoins() {
 	}
 
 	configs.CurrentCoins = todays_coins
-
-	prices, err := configs.GetMarketPrice(todays_coins)
-	if err != nil {
-		log.Println("Could not get the price of market coins")
-	}
-
-	configs.CoinPrices = prices
 }
 
 func UpdateCoinPrices() {
-
-	prices, err := configs.GetMarketPrice(configs.CurrentCoins)
+	//* A simple update script for updating prices
+	updatedCoins, err := configs.GetSpecificCoins(configs.CurrentCoins)
 
 	if err != nil {
 		log.Println("Could not get the price of market coins")
 	}
-
-	configs.CoinPrices = prices
+	configs.CurrentCoins = updatedCoins
 }
