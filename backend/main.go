@@ -20,6 +20,7 @@ func main() {
 	scheduler.Every(1).Day().At("23:55").Do(func() { scripts.UpdateToday() })
 	scheduler.StartAsync()
 
+	//* Configure Gin
 	router := gin.Default()
 	store := memstore.NewStore([]byte(configs.EnvCookieSecret()))
 	router.Use(sessions.Sessions("cryptoguess", store))

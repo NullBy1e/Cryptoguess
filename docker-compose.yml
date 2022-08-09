@@ -30,4 +30,14 @@ services:
       - GIN_MODE=release
     restart: always
 
+  redis:
+    #! Redis database for storage
+    container_name: cryptoguess-redis
+    restart: always
+    image: 'redis:alpine'
+    ports:
+      - '6379:6379'
+    volumes:
+      - ./redis-data:/data
+
 # TODO: Add the Redis database
