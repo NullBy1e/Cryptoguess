@@ -35,7 +35,7 @@ func SaveTransaction(transaction Transaction) error {
 		return errors.New("redis database not connected")
 	}
 
-	err := set(rdb, fmt.Sprint(counter), transaction)
+	err := set(rdb, "tx"+fmt.Sprint(counter), transaction)
 	if err != nil {
 		return err
 	}
@@ -52,7 +52,7 @@ func GetTransaction(transactionID int) (Transaction, error) {
 		return Transaction{}, errors.New("redis database not connected")
 	}
 
-	err := get(rdb, fmt.Sprint(transactionID), &transaction)
+	err := get(rdb, "tx"+fmt.Sprint(transactionID), &transaction)
 	if err != nil {
 		return Transaction{}, err
 	}
