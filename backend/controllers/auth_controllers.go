@@ -68,7 +68,7 @@ func AuthTest() gin.HandlerFunc {
 		sessionID := session.Get("id")
 		isAdmin := session.Get("admin")
 		if sessionID == nil {
-			c.JSON(http.StatusNotFound, responses.AuthResponse{Message: "User not logged in"})
+			c.JSON(http.StatusAccepted, responses.AuthResponse{Message: "User not logged in"})
 			c.Abort()
 		} else if isAdmin == true && sessionID != nil {
 			c.JSON(http.StatusOK, responses.AuthResponse{Message: "User logged in as admin"})

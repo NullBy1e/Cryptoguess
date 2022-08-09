@@ -2,9 +2,11 @@ package controllers
 
 import (
 	"cryptoguess/configs"
+	"cryptoguess/models"
 	"cryptoguess/responses"
 	"net/http"
 
+	"github.com/gin-contrib/sessions"
 	"github.com/gin-gonic/gin"
 	"github.com/go-playground/validator"
 )
@@ -22,7 +24,43 @@ func RootVersion() gin.HandlerFunc {
 
 func RootUploadResult() gin.HandlerFunc {
 	return func(c *gin.Context) {
-		//TODO: Process the Result with the validator and parse them.
-		c.JSON(http.StatusServiceUnavailable, nil)
+
+		var request models.Transaction
+		//* Checks the request for its validity
+		if err := c.BindJSON(&request); err != nil {
+			c.JSON(http.StatusBadRequest, responses.TransactionResponse{Message: "error", Data: map[string]interface{}{"data": err.Error()}})
+			return
+		}
+		if validationErr := validate.Struct(&request); validationErr != nil {
+			c.JSON(http.StatusBadRequest, responses.TransactionResponse{Message: "error", Data: map[string]interface{}{"data": validationErr.Error()}})
+			return
+		}
+
+		//? There should be a capcha of some sorts to prevent bots, and not the cookie session
+		session := sessions.Default(c)
+		sessionID := session.Get("id")
+		if sessionID == nil {
+			c.JSON(http.StatusForbidden, responses.TransactionResponse{Message: "You need to be logged in to vote"})
+			return
+		}
+
+		if session.Get(request.Name) == "voted" {
+			c.JSON(http.StatusConflict, responses.TransactionResponse{Message: "already voted on: " + request.Name})
+			return
+		} else {
+			session.Set(request.Name, "voted")
+			session.Save()
+		}
+
+		transaction := configs.Transaction{
+			Name:   request.Name,
+			Price:  request.Price,
+			Hour:   request.Hour,
+			Action: *request.Action,
+		}
+
+		configs.SaveTransaction(transaction)
+
+		c.JSON(http.StatusOK, responses.TransactionResponse{Message: "Transaction saved"})
 	}
 }
