@@ -2,3 +2,5 @@ main
 .vscode
 .env
 .DS_STORE
+.*.swp
+.*.swo
