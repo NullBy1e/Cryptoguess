@@ -62,13 +62,4 @@
 		display: flex;
 		justify-content: center;
 	}
-	.choice {
-		margin-left: 20px;
-		width: 150px;
-		text-align: center;
-		border-style: solid;
-		border-width: 1px;
-		border-color:grey;
-		border-radius: 10%;
-	}
 </style>
