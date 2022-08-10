@@ -7,7 +7,7 @@ const About = () => {
       <Navbar />
       <div className='text-center w-full my-20'>
         <Header fontSize={'text-5xl font-normal'}>
-          About <span className='font-bold'>CryptoGuess</span>
+          <span className='font-light'>About</span> <span className='font-bold'>CryptoGuess</span>
         </Header> 
       </div>
     </>
