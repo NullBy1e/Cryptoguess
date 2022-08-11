@@ -14,16 +14,18 @@ const Button = (props) => {
 const VoteForm = (props) => {
   return (
     <div className="block bg-slate-800 text-slate-50 rounded-lg font-bold text-xl m-20 px-40 py-20 sm:justify-center">
-      <div>
-        <p>
-          {props.coin.name}::{props.coin.price} USD
-        </p>
+      <div className="flex items-center">
+        <div className="flex-1 w-full text-center">
+          <p>
+            {props.coin.name}::{props.coin.price} USD
+          </p>
+        </div>
       </div>
-      <div className="relative mt-5">
-        <div className="float-right">
+      <div className="flex justify-center mt-5 space-x-4">
+        <div className="w-1/2">
           <Button className="bg-green-800">Buy/Long</Button> 
         </div>
-        <div className="float-left">
+        <div className="w-1/2">
           <Button className="bg-red-800">Sell/Short</Button> 
         </div>
       </div>
