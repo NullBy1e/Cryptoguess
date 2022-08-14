@@ -4,3 +4,4 @@ main
 .DS_STORE
 .*.swp
 .*.swo
+/archive/
