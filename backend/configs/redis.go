@@ -10,9 +10,11 @@ import (
 	"github.com/go-redis/redis/v9"
 )
 
-var ctx = context.Background()
-var rdb *redis.Client
-var counter = 0
+var (
+	ctx     = context.Background()
+	rdb     *redis.Client
+	counter = 0
+)
 
 type Transaction struct {
 	Name   string  `json:"name"`
