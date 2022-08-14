@@ -1,27 +1,7 @@
-// const URL = "http://localhost:50";
+const URL = "http://localhost:8000/resources/coins_today";
 
-export function getTodaysCoins() {
-	// console.log(fetch(URL));
-	return [
-		{
-			name: "BTC",
-			price: "23000",
-			action: "buy",
-		},
-		{
-			name: "ETH",
-			price: "1700",
-			action: "sell",
-		},
-		{
-			name: "MATIC",
-			price: "0.9",
-			action: "buy",
-		},
-		{
-			name: "XMR",
-			price: "130",
-			action: "sell",
-		},
-	];
+export async function getTodaysCoins() {
+	const response = await fetch(URL)
+	var data = await response.json()
+	return data
 }
