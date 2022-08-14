@@ -41,9 +41,10 @@ func main() {
 		MaxAge:           12 * time.Hour,
 	}))
 
-	//* Configure Paths
+	//* Configure Routes
 	routes.RootRoute(router)
 	routes.ResourcesRoute(router)
 	routes.AuthRoute(router)
+
 	router.Run(":8000")
 }
