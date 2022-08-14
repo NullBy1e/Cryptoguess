@@ -24,7 +24,9 @@ func generateTodaysCoins() {
 	market_coins, err := configs.GetMarketCoins()
 
 	if err != nil {
-		log.Println("Could not get the market coins")
+		// TODO: Improve this error handling, because it can occur in
+		// TODO: Different scenarios
+		log.Panic("Could not get the market coins")
 	}
 
 	rand.Seed(time.Now().UnixNano())
@@ -43,7 +45,8 @@ func UpdateCoinPrices() {
 	updatedCoins, err := configs.GetSpecificCoins(configs.CurrentCoins)
 
 	if err != nil {
-		log.Println("Could not get the price of market coins")
+		//TODO: Same as in update_day.go:27-28
+		log.Panic("Could not get the price of market coins")
 	}
 	configs.CurrentCoins = updatedCoins
 }
