@@ -44,12 +44,14 @@ func RootUploadResult() gin.HandlerFunc {
 			return
 		}
 
-		if session.Get(request.Name) == "voted" {
-			c.JSON(http.StatusConflict, responses.TransactionResponse{Message: "already voted on: " + request.Name})
-			return
-		} else {
-			session.Set(request.Name, "voted")
-			session.Save()
+		if session.Get("admin") == false {
+			if session.Get(request.Name) == "voted" {
+				c.JSON(http.StatusConflict, responses.TransactionResponse{Message: "already voted on: " + request.Name})
+				return
+			} else {
+				session.Set(request.Name, "voted")
+				session.Save()
+			}
 		}
 
 		transaction := configs.Transaction{
