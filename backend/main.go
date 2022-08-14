@@ -6,6 +6,7 @@ import (
 	"cryptoguess/scripts"
 	"time"
 
+	"github.com/gin-contrib/cors"
 	"github.com/gin-contrib/sessions"
 	"github.com/gin-contrib/sessions/memstore"
 	"github.com/gin-gonic/gin"
@@ -28,8 +29,19 @@ func main() {
 
 	//* Configure Gin
 	router := gin.Default()
-	store := memstore.NewStore([]byte(configs.EnvCookieSecret()))
-	router.Use(sessions.Sessions("cryptoguess", store))
+	router.Use(sessions.Sessions("cryptoguess", memstore.NewStore([]byte(configs.EnvCookieSecret()))))
+
+	//* Configure CORS
+	router.Use(cors.New(cors.Config{
+		AllowAllOrigins:  true,
+		AllowMethods:     []string{"POST", "GET"},
+		AllowHeaders:     []string{"Origin"},
+		ExposeHeaders:    []string{"Content-Length"},
+		AllowCredentials: true,
+		MaxAge:           12 * time.Hour,
+	}))
+
+	//* Configure Paths
 	routes.RootRoute(router)
 	routes.ResourcesRoute(router)
 	routes.AuthRoute(router)
