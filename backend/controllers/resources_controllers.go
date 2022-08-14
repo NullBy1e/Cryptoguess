@@ -17,8 +17,9 @@ func ResourceGetCoinsToday() gin.HandlerFunc {
 		var coins_list []responses.DailyCoinResponse
 		for i := range coins {
 			coin_name := coins[i].Name
+			coin_symbol := coins[i].Symbol
 			coin_price := coins[i].CurrentPrice
-			coins_list = append(coins_list, responses.DailyCoinResponse{Name: coin_name, Price: coin_price})
+			coins_list = append(coins_list, responses.DailyCoinResponse{Name: coin_name, Symbol: coin_symbol, Price: coin_price})
 		}
 
 		c.JSON(http.StatusOK, coins_list)
@@ -55,6 +56,7 @@ func ResourceGetArchiveFile() gin.HandlerFunc {
 			c.JSON(http.StatusBadRequest, responses.ResourcesResponse{Message: "Cannot get the provided file", Data: map[string]interface{}{"data": err.Error()}})
 			return
 		}
+
 		c.Header("Content-Disposition", "attachment; filename="+File.Name)
 		c.Data(http.StatusOK, "application/octet-stream", fileContent)
 	}

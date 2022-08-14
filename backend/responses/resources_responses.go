@@ -1,8 +1,9 @@
 package responses
 
 type DailyCoinResponse struct {
-	Name  string  `json:"name"`
-	Price float64 `json:"price"`
+	Name   string  `json:"name"`
+	Symbol string  `json:"symbol"`
+	Price  float64 `json:"price"`
 }
 
 type ResourcesResponse struct {
