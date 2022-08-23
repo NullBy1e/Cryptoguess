@@ -1,5 +1,5 @@
 const callApi = () => {
-  return [
+	return [
 		{
 			name: "BTC",
 			price: "23 000",
@@ -17,6 +17,6 @@ const callApi = () => {
 			price: "130",
 		},
 	];
-}
+};
 
 export { callApi };
