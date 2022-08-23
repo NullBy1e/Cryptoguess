@@ -1,31 +1,25 @@
-# Frontend
+# Cryptoguess frontend
 
+## About:
 
-Run: `npm install`
+The user interface for interacting with the Cryptoguess platform.
 
-To debug/dev run: `npm start`
-To build run: `npm run build; npm serve -d build/`
+Written in React and Tailwind css
 
-Example JSON from server:
+## Running:
 
-[
-		{
-			name: "BTC",
-			price: "23000",
-		},
-		{
-			name: "ETH",
-			price: "1700",
-		},
-		{
-			name: "MATIC",
-			price: "0.9",
-		},
-		{
-			name: "XMR",
-			price: "130",
-		},
-];
+Install dependencies by running `npm install`
 
-User clicks the buy or sell button to predict the price movement.
+Run local debug server by `npm start`
 
+To compile project run `npm run build`
+
+And to simulate server deployment run: `npx serve -d build`
+
+## API:
+
+The API returns an array of objects that corespond to the todays cryptocurrencies
+
+As of the time of writing in order to submit result of the user, the frontend needs to authenticate as temporary user or admin.
+
+Admins are not limited to one request per session.
