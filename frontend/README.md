@@ -1,9 +1,10 @@
 # Frontend
 
 
-Run: npm install
+Run: `npm install`
 
-To debug run: npm run dev
+To debug/dev run: `npm start`
+To build run: `npm run build; npm serve -d build/`
 
 Example JSON from server:
 
