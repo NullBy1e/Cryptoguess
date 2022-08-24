@@ -1,6 +1,7 @@
+import React from "react";
+
 import Header from "../../shared/components/Header";
 import BigButton from "../../shared/components/BigButton";
-import React from "react";
 
 const Hero = () => {
 	return (

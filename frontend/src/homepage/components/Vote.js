@@ -1,6 +1,6 @@
-import { useEffect } from "react";
-import { callApi } from "../../lib/dummyAPI";
 import React from "react";
+
+import { callApi } from "../../lib/dummyAPI";
 
 const sendState = async (coin, price, action) => {
 	const apiBase = "http://localhost:8000";
