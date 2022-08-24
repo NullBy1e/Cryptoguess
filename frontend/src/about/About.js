@@ -1,6 +1,7 @@
+import React from "react";
+
 import Header from "../shared/components/Header";
 import Navbar from "../shared/components/Navbar";
-import React from "react";
 
 const About = () => {
 	return (

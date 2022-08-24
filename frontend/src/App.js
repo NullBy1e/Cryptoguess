@@ -1,6 +1,7 @@
-import { Routes, Route, Navigate } from "react-router-dom";
-import Homepage from "./homepage/Homepage";
 import React from "react";
+import { Routes, Route, Navigate } from "react-router-dom";
+
+import Homepage from "./homepage/Homepage";
 import About from "./about/About";
 
 const App = () => {
