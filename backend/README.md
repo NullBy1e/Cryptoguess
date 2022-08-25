@@ -2,18 +2,20 @@
 
 To build and run:
 
-go build main.go
+```
+$ go build main.go
 
-./main
+$ ./main
+```
 
-API Routes:
+## API Routes:
 
 -   /version => Returns the API version and version name
 -   /upload_result => Uploads result from user
 -   /resources/coins_today => Returns todays coins
 -   /resources/archive/:file => Returns archival data
 
-Database Solution:
+## Database 
 
 I think the most suitable solution for this project would be a Redis Datebase acting as cache for a day,
 after then it would write out to a csv file and archived for further use.
